@@ -6,6 +6,9 @@ const txt = document.querySelector('#txt')
 const submit = document.querySelector('#submit')
 const todo = document.querySelector('#todo')
 
+const storedItems = localStorage.getItem('todoItems');
+
+
 submit.addEventListener('click',(e)=>{
 e.preventDefault()
     if(txt.value == ''){
@@ -13,6 +16,7 @@ e.preventDefault()
     }else{const li = document.createElement('li')
     li.innerText = txt.value
     todo.appendChild(li)
+
     li.addEventListener('click',()=>{
         li.style.textDecoration = 'line-through'
     })
@@ -20,9 +24,13 @@ e.preventDefault()
     button.innerHTML= 'x'
     li.appendChild(button)
     li.classList.add('item')
+    localStorage.setItem('value',todo)
     button.addEventListener('click', ()=>{
         todo.removeChild(li)
+
     })}
+    
+    
     txt.value = ''
 })
 
